@@ -1,11 +1,22 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- OS判定
+local is_windows = wezterm.target_triple:find("windows") ~= nil
+local is_macos = wezterm.target_triple:find("darwin") ~= nil
+
 config.automatically_reload_config = true
 config.font_size = 12.0
 config.use_ime = true
-config.window_background_opacity = 0.85
-config.macos_window_background_blur = 20
+
+-- OS別の背景設定
+if is_macos then
+  config.window_background_opacity = 0.85
+  config.macos_window_background_blur = 20
+elseif is_windows then
+  config.window_background_opacity = 0.92  -- Windowsは少し不透明に
+  config.win32_system_backdrop = "Acrylic"  -- Windows 11のアクリル効果
+end
 
 ----------------------------------------------------
 -- Tab

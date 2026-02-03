@@ -72,6 +72,10 @@ return {
     -- 貼り付け
     { key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
 
+    { key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
+    { key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
+    { key = "Insert", mods = "SHIFT", action = act.PasteFrom("Clipboard") },
+
     -- Pane作成 leader + r or d
     { key = "d", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "r", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
